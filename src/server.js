@@ -7,17 +7,14 @@ const port = process.env.PORT
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('Hello World! 123')
 })
 
 app.get('/about', (req, res) => {
-    res.render('sample1.ejs')
-})
-
-app.get('/product', (req, res) => {
-    res.render('sample2.ejs')
+    res.render('sample.ejs')
 })
 
 app.listen(port, () => {

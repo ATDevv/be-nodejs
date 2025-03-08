@@ -1,21 +1,24 @@
 {
-  "name": "be-nodejs",
-  "version": "1.0.0",
-  "description": "D1a ",
-  "keywords": [
-    "nodejs"
-  ],
-  "license": "ISC",
-  "author": "D1a",
-  "type": "commonjs",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node ./src/server.js"
-  },
-  "dependencies": {
-    "dotenv": "^16.4.7",
-    "ejs": "^3.1.10",
-    "express": "^4.21.2"
-  }
+    "name": "be-nodejs",
+    "version": "1.0.0",
+    "description": "D1a ",
+    "keywords": [
+        "nodejs"
+    ],
+    "license": "ISC",
+    "author": "D1a",
+    "type": "commonjs",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "nodemon ./src/server.js"
+    },
+    "dependencies": {
+        "dotenv": "^16.4.7",
+        "ejs": "^3.1.10",
+        "express": "^4.21.2"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.9"
+    }
 }
