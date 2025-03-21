@@ -1,8 +1,8 @@
-const getHomePage = (res, req) => {
+const getHomePage = (req, res) => {
     res.send('Hello World! 123')
 }
 
-const getAboutPage = (res, req) => {
+const getAboutPage = (req, res) => {
     res.render('sample.ejs')
 }
 
