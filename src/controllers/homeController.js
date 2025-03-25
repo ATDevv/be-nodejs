@@ -17,12 +17,16 @@ const getAboutPage = (req, res) => {
 }
 
 const postCreateUser = (req, res) => {
-    const a = [];
-    a.push(req.body.email)
-    a.push(req.body.name)
-    a.push(req.body.city)
-    res.send(a)
-    console.log(a)
+    const sqlInsert = 'insert into Users (email, name, city) values(?, ?, ?)'
+    let { email, name, city } = req.body
+
+    //?1 = email...
+    // ? : pass dynamic data
+
+    connection.query(sqlInsert, [email, name, city], (err, results) => {
+        if (err) throw err
+        res.send('Create Succes')
+    })
 }
 
 module.exports = { getHomePage, getAboutPage, postCreateUser }
