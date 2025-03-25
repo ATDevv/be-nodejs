@@ -8,6 +8,10 @@ const connection = require('./config/database')
 const app = express()
 const port = process.env.PORT || 8888
 
+//config req.body
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+
 //config view engine
 configViewEngine(app)
 

@@ -16,4 +16,13 @@ const getAboutPage = (req, res) => {
     res.render('sample.ejs')
 }
 
-module.exports = { getHomePage, getAboutPage }
+const postCreateUser = (req, res) => {
+    const a = [];
+    a.push(req.body.email)
+    a.push(req.body.name)
+    a.push(req.body.city)
+    res.send(a)
+    console.log(a)
+}
+
+module.exports = { getHomePage, getAboutPage, postCreateUser }
