@@ -21,7 +21,7 @@ const createNewUser = async (req, res) => {
             name,
             city,
         ])
-        res.send('Create Succes')
+        res.redirect('/')
     } catch (err) {
         console.log(err)
     }
@@ -51,7 +51,7 @@ const updateUser = async (req, res) => {
             city,
             id,
         ])
-        res.send('Update Succes')
+        res.redirect('/')
     } catch (err) {
         console.log(err)
     }
