@@ -29,7 +29,9 @@
                     <td><%= users.name%></td>
                     <td><%= users.city%></td>
                     <td>
-                        <button>Edit</button>
+                        <a href="/update/<%= users.id%>">
+                            <button>Edit</button>
+                        </a>
                         <button>Delete</button>
                     </td>
                 </tr>
