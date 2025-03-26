@@ -6,39 +6,13 @@
         <title>Document</title>
         <link rel="stylesheet" href="/css/styles.css" />
     </head>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            padding: 20px;
-        }
-        th,
-        td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        tr:hover {
-            background-color: #ccc;
-        }
-
-        .table-container {
-            padding: 20px;
-        }
-
-        .title {
-            border: 2px solid red;
-            display: inline-block;
-            padding: 5px;
-            border-radius: 8px;
-        }
-    </style>
     <body>
         <div class="topnav">
             <a class="active" href="/">Home</a>
             <a href="/create">Create User</a>
         </div>
         <div class="table-container">
+            <!-- <%= JSON.stringify(listUsers) %> -->
             <h2 class="title">List Users</h2>
             <table>
                 <tr>
@@ -46,19 +20,20 @@
                     <th>Email</th>
                     <th>Name</th>
                     <th>City</th>
+                    <th>Actions</th>
                 </tr>
+                <% listUsers.map(users => { %>
                 <tr>
-                    <td>1</td>
-                    <td>Peter</td>
-                    <td>Griffin</td>
-                    <td>$100</td>
+                    <td><%= users.id%></td>
+                    <td><%= users.email%></td>
+                    <td><%= users.name%></td>
+                    <td><%= users.city%></td>
+                    <td>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Lois</td>
-                    <td>Griffin</td>
-                    <td>$150</td>
-                </tr>
+                <% }) %>
             </table>
         </div>
     </body>

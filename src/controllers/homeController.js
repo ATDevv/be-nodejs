@@ -1,7 +1,9 @@
 const connection = require('../config/database')
+const { getAllUsers, createNewUser } = require('../services/crudService')
 
-const getHomePage = (req, res) => {
-    return res.render('home.ejs')
+const getHomePage = async (req, res) => {
+    const results = await getAllUsers()
+    return res.render('home.ejs', { listUsers: results })
 }
 
 const getAboutPage = (req, res) => {
@@ -9,22 +11,7 @@ const getAboutPage = (req, res) => {
 }
 
 const postCreateUser = async (req, res) => {
-    const sqlInsert = 'insert into Users (email, name, city) values(?, ?, ?)'
-    let { email, name, city } = req.body
-
-    //?1 = email...
-    // ? : pass dynamic data
-
-    try {
-        const [results, fields] = await connection.query(sqlInsert, [
-            email,
-            name,
-            city,
-        ])
-        res.send('Create Succes')
-    } catch (err) {
-        console.log(err)
-    }
+    await createNewUser(req, res)
 }
 
 const getCreateUser = (req, res) => {
