@@ -15,7 +15,17 @@
             <h3>Update Users</h3>
 
             <div class="form">
-                <form action="/update" method="post">
+                <form action="/update-user" method="post">
+                    <div class="none">
+                        <label for="id">ID</label>
+                        <input
+                            value="<%= user.id %>"
+                            type="text"
+                            id="id"
+                            name="id"
+                        />
+                    </div>
+
                     <label for="email">Email</label>
                     <input
                         value="<%= user.email %>"

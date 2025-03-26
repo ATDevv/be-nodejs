@@ -3,6 +3,7 @@ const {
     getAllUsers,
     createNewUser,
     getUserById,
+    updateUser,
 } = require('../services/crudService')
 
 const getHomePage = async (req, res) => {
@@ -14,10 +15,6 @@ const getAboutPage = (req, res) => {
     res.render('sample.ejs')
 }
 
-const postCreateUser = async (req, res) => {
-    await createNewUser(req, res)
-}
-
 const getCreateUser = (req, res) => {
     res.render('create.ejs')
 }
@@ -27,10 +24,19 @@ const getUpdateUser = async (req, res) => {
     return res.render('update.ejs', { user: user })
 }
 
+const postCreateUser = async (req, res) => {
+    await createNewUser(req, res)
+}
+
+const postUpdateUser = async (req, res) => {
+    await updateUser(req, res)
+}
+
 module.exports = {
     getHomePage,
     getAboutPage,
     postCreateUser,
     getCreateUser,
     getUpdateUser,
+    postUpdateUser,
 }

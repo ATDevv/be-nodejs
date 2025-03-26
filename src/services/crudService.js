@@ -40,8 +40,26 @@ const getUserById = async (req, res) => {
     }
 }
 
+const updateUser = async (req, res) => {
+    const sqlUpdate = 'update Users set email=?, name=?, city=?  where id=?'
+    let { email, name, city, id } = req.body
+
+    try {
+        const [results, fields] = await connection.query(sqlUpdate, [
+            email,
+            name,
+            city,
+            id,
+        ])
+        res.send('Update Succes')
+    } catch (err) {
+        console.log(err)
+    }
+}
+
 module.exports = {
     getAllUsers,
     createNewUser,
     getUserById,
+    updateUser,
 }
