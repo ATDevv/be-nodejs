@@ -27,7 +27,7 @@ const createNewUser = async (req, res) => {
     }
 }
 
-const updateUser = async (req, res) => {
+const getUserById = async (req, res) => {
     const userId = req.params.id
     const sqlSelectId = 'Select * from Users where id = ?'
     try {
@@ -43,5 +43,5 @@ const updateUser = async (req, res) => {
 module.exports = {
     getAllUsers,
     createNewUser,
-    updateUser,
+    getUserById,
 }

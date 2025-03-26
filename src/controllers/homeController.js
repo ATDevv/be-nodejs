@@ -2,7 +2,7 @@ const connection = require('../config/database')
 const {
     getAllUsers,
     createNewUser,
-    updateUser,
+    getUserById,
 } = require('../services/crudService')
 
 const getHomePage = async (req, res) => {
@@ -23,7 +23,7 @@ const getCreateUser = (req, res) => {
 }
 
 const getUpdateUser = async (req, res) => {
-    const user = await updateUser(req, res)
+    const user = await getUserById(req, res)
     return res.render('update.ejs', { user: user })
 }
 
