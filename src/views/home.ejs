@@ -32,7 +32,12 @@
                         <a href="/update/<%= users.id%>">
                             <button>Edit</button>
                         </a>
-                        <button>Delete</button>
+                        <form
+                            action="/delete-user/<%= users.id%>"
+                            method="post"
+                        >
+                            <button>Delete</button>
+                        </form>
                     </td>
                 </tr>
                 <% }) %>

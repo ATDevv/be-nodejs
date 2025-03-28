@@ -57,9 +57,22 @@ const updateUser = async (req, res) => {
     }
 }
 
+const deleteUser = async (req, res) => {
+    const sqlDelete = 'delete from Users where  id=?'
+    const id = req.body.id
+
+    try {
+        const [results, fields] = await connection.query(sqlDelete, [id])
+        res.redirect('/')
+    } catch (err) {
+        console.log(err)
+    }
+}
+
 module.exports = {
     getAllUsers,
     createNewUser,
     getUserById,
     updateUser,
+    deleteUser,
 }

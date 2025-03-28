@@ -32,6 +32,15 @@ const postUpdateUser = async (req, res) => {
     await updateUser(req, res)
 }
 
+const postDeleteUser = async (req, res) => {
+    const user = await getUserById(req, res)
+    return res.render('delete.ejs', { user: user })
+}
+
+const postHandleRemoveUser = async (req, res) => {
+    await deleteUser(req, res)
+}
+
 module.exports = {
     getHomePage,
     getAboutPage,
@@ -39,4 +48,6 @@ module.exports = {
     getCreateUser,
     getUpdateUser,
     postUpdateUser,
+    postDeleteUser,
+    postHandleRemoveUser,
 }
