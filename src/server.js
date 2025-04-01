@@ -4,6 +4,7 @@ const path = require('path') //Common js
 const configViewEngine = require('./config/viewEngine')
 const webRoutes = require('./routes/web')
 const connection = require('./config/database')
+const mongoose = require('mongoose')
 
 const app = express()
 const port = process.env.PORT || 8888
@@ -14,6 +15,13 @@ app.use(express.urlencoded({ extended: false }))
 
 //config view engine
 configViewEngine(app)
+
+const kittySchema = new mongoose.Schema({
+    name: String,
+})
+const Kitten = mongoose.model('Kitten', kittySchema)
+const cat = new Kitten({ name: 'Silence' })
+cat.save()
 
 //test connection
 ;(async () => {
