@@ -1,4 +1,5 @@
 const connection = require('../config/database')
+const User = require('../models/user')
 
 const getAllUsers = async () => {
     const sqlSelectAll = 'select * from Users u'
@@ -12,19 +13,15 @@ const getAllUsers = async () => {
 }
 
 const createNewUser = async (req, res) => {
-    const sqlInsert = 'insert into Users (email, name, city) values(?, ?, ?)'
     let { email, name, city } = req.body
 
-    try {
-        const [results, fields] = await connection.query(sqlInsert, [
-            email,
-            name,
-            city,
-        ])
-        res.redirect('/')
-    } catch (err) {
-        console.log(err)
-    }
+    await User.create({
+        email: email,
+        name: name,
+        city: city
+    })
+    
+    res.send('Sucess')
 }
 
 const getUserById = async (req, res) => {
