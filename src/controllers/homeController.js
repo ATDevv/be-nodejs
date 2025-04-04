@@ -5,9 +5,10 @@ const {
     getUserById,
     updateUser,
 } = require('../services/crudService')
+const User = require('../models/user')
 
 const getHomePage = async (req, res) => {
-    const results = []
+    const results = await User.find({})
     return res.render('home.ejs', { listUsers: results })
 }
 
@@ -20,7 +21,8 @@ const getCreateUser = (req, res) => {
 }
 
 const getUpdateUser = async (req, res) => {
-    const user = await getUserById(req, res)
+    const userId = req.params.id
+    const user = await User.findById(userId).exec()
     return res.render('update.ejs', { user: user })
 }
 
@@ -29,7 +31,13 @@ const postCreateUser = async (req, res) => {
 }
 
 const postUpdateUser = async (req, res) => {
-    await updateUser(req, res)
+    const { id, email, name, city } = req.body
+
+    await User.updateOne(
+        { _id: id },
+        { email: email, name: name, city: city }
+    )
+    res.redirect('/')
 }
 
 const postDeleteUser = async (req, res) => {
