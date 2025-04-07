@@ -3,6 +3,7 @@ const express = require('express')
 const path = require('path') //Common js
 const configViewEngine = require('./config/viewEngine')
 const webRoutes = require('./routes/web')
+const routerAPI = require('./routes/api')
 const connection = require('./config/database')
 
 const app = express()
@@ -29,3 +30,4 @@ configViewEngine(app)
 
 //route
 app.use('/', webRoutes)
+app.use('/v1/api', routerAPI)

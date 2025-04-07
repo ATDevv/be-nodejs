@@ -21,7 +21,7 @@ const createNewUser = async (req, res) => {
         city: city
     })
     
-    res.send('Sucess')
+    res.send('Success')
 }
 
 const getUserById = async (req, res) => {
