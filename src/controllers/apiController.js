@@ -22,7 +22,21 @@ const postUserAPI = async (req, res) => {
     })
 }
 
+const putUserAPI = async (req, res) => {
+    const { id, email, name, city } = req.body
+
+    let user = await User.updateOne(
+        { _id: id },
+        { email: email, name: name, city: city }
+    )
+    return res.status(200).json({
+        EC: 0,
+        data: user,
+    })
+}
+
 module.exports = {
     getUserAPI,
     postUserAPI,
+    putUserAPI,
 }
