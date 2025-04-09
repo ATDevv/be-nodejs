@@ -4,6 +4,7 @@ const {
     getUserAPI,
     postUserAPI,
     putUserAPI,
+    deleteUserAPI,
 } = require('../controllers/apiController')
 
 routerAPI.get('/', (req, res) => {
@@ -13,5 +14,6 @@ routerAPI.get('/', (req, res) => {
 routerAPI.get('/users', getUserAPI)
 routerAPI.post('/users', postUserAPI)
 routerAPI.put('/users', putUserAPI)
+routerAPI.delete('/users', deleteUserAPI)
 
 module.exports = routerAPI

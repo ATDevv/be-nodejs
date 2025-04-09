@@ -35,8 +35,19 @@ const putUserAPI = async (req, res) => {
     })
 }
 
+const deleteUserAPI = async (req, res) => {
+    const { id } = req.body
+
+    let user = await User.deleteOne({_id: id})
+    return res.status(200).json({
+        EC: 0,
+        data: user,
+    })
+}
+
 module.exports = {
     getUserAPI,
     postUserAPI,
     putUserAPI,
+    deleteUserAPI,
 }
